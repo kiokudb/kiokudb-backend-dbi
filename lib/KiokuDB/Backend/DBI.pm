@@ -898,13 +898,12 @@ sub _search_gin_subquery {
           unless $op =~ /^(UNION|INTERSECT|EXCEPT)$/i;
 
         die 'gin set query missing subqueries'
-          unless ref $spec->{subqueries} eq 'ARRAY' &&
-            scalar @{$spec->{subqueries}};
+          unless @v;
 
         return "(".
           ( join ' '.$op.' ',
             map { $self->_search_gin_subquery($_, $binds) }
-            @{ $spec->{subqueries} }
+            @v
           ).")";
 
     } elsif ( $spec->{method} eq 'all' and @v > 1) {
