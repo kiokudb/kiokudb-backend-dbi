@@ -884,13 +884,13 @@ sub search {
     my @binds;
 
     my $inner_sql = $self->_search_gin_subquery(\%spec, \@binds);
-    return $self->_select_entry_stream("SELECT data FROM entries WHERE id IN ".$inner_sql,@binds);
+    return $self->_select_entry_stream("SELECT data FROM entries WHERE id IN (".$inner_sql.")",@binds);
 }
 
 sub _search_gin_subquery {
     my ($self, $spec, $binds) = @_;
 
-    my @v = @{ $spec->{values} };
+    my @v = ref $spec->{values} eq 'ARRAY' ? @{ $spec->{values} } : ();
     if ( $spec->{method} eq 'set' ) {
         my $op = $spec->{operation};
 
@@ -911,13 +911,13 @@ sub _search_gin_subquery {
     } elsif ( $spec->{method} eq 'all' and @v > 1) {
         # for some reason count(id) = ? doesn't work
         push @$binds, @v;
-        return "( SELECT id FROM gin_index WHERE value IN ".
+        return "SELECT id FROM gin_index WHERE value IN ".
           "(" . join(", ", ('?') x @v) . ")" .
-            "GROUP BY id HAVING COUNT(id) = " . scalar(@v). ")";
+            "GROUP BY id HAVING COUNT(id) = " . scalar(@v);
     } else {
         push @$binds, @v;
-        return "( SELECT DISTINCT id FROM gin_index WHERE value IN ".
-          "(" . join(", ", ('?') x @v) . ") )";
+        return "SELECT DISTINCT id FROM gin_index WHERE value IN ".
+          "(" . join(", ", ('?') x @v) . ")";
     }
 }
 
