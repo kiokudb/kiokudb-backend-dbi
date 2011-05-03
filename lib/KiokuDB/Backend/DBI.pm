@@ -454,7 +454,7 @@ sub insert_rows {
             }
         }
 
-        my $bind_attributes = $self->storage->source_bind_attributes($self->schema->source("entries"));
+        my $colinfo = $self->schema->source('entries')->columns_info;
 
         my %rows = ( insert => $insert, update => $update );
 
@@ -467,9 +467,9 @@ sub insert_rows {
             foreach my $column_name (@cols) {
                 my $attributes = {};
 
-                if( $bind_attributes ) {
-                    $attributes = $bind_attributes->{$column_name}
-                    if defined $bind_attributes->{$column_name};
+                if ( exists $colinfo->{$column_name} ) {
+                    my $dt = $colinfo->{$column_name}{data_type};
+                    $attributes = $self->storage->bind_attribute_by_data_type($dt);
                 }
 
                 $sth->bind_param_array( $i, $rows{$op}->{$column_name}, $attributes );
