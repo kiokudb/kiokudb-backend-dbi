@@ -95,3 +95,11 @@ already present in the other tables.
 
 Looking up an object with such an ID is a dynamic lookup that delegates to the
 L<DBIx::Class::Schema> and resultsets.
+
+=begin Pod::Coverage
+
+compile
+
+=end Pod::Coverage
+
+=cut

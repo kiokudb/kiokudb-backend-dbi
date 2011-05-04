@@ -1310,4 +1310,43 @@ Yuval Kogman E<lt>nothingmuch@woobling.orgE<gt>
     rights reserved This program is free software; you can redistribute
     it and/or modify it under the same terms as Perl itself.
 
+=begin Pod::Coverage
+
+BUILD
+DEMOLISH
+all_entries
+all_entry_ids
+child_entries
+child_entry_ids
+clear
+create_tables
+default_typemap
+delete
+entries_to_rows
+entry_to_row
+exists
+fetch_entry
+has_batch_size
+insert
+insert_entry
+insert_rows
+new_from_dsn
+new_garbage_collector
+prepare_insert
+prepare_select
+prepare_update
+register_handle
+remove_ids
+root_entries
+root_entry_ids
+search
+simple_search
+tables_exist
+txn_begin
+txn_commit
+txn_rollback
+update_index
+
+=end Pod::Coverage
+
 =cut

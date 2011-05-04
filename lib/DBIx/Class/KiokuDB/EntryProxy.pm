@@ -44,3 +44,12 @@ DBIx::Class::KiokuDB::EntryProxy - A proxying result class for KiokuDB objects
 
 This class implements the necessary glue to properly inflate resultsets for
 L<KiokuDB> object into proper instances using L<KiokuDB>.
+
+=begin Pod::Coverage
+
+new
+inflate_result
+
+=end Pod::Coverage
+
+=cut

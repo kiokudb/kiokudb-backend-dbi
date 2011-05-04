@@ -89,3 +89,11 @@ and are not actually written to storage.
 
 Looking up such an ID causes the backend to dynamically search for such a
 resultset in the L<DBIx::Class::Schema>.
+
+=begin Pod::Coverage
+
+compile
+
+=end Pod::Coverage
+
+=cut
