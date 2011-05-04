@@ -133,7 +133,7 @@ sub define_kiokudb_gin_index_resultsource {
         value => { data_type => "varchar" },
     );
 
-    $gin_index->add_relationship('entry_ids', $args{entries_source}, { 'foreign.id' => 'me.id' });
+    $gin_index->add_relationship('entry_ids', $args{entries_source}, { 'foreign.id' => 'self.id' });
 
     $gin_index->sqlt_deploy_callback(sub {
         my ($source, $sqlt_table) = @_;
