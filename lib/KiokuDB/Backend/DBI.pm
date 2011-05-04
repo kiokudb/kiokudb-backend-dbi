@@ -20,7 +20,7 @@ use Scalar::Util qw(weaken refaddr);
 use KiokuDB::Backend::DBI::Schema;
 use KiokuDB::TypeMap;
 use KiokuDB::TypeMap::Entry::DBIC::Row;
-use KiokuDB::TypeMap::Entry::DBIC::ResultSourceHandle;
+use KiokuDB::TypeMap::Entry::DBIC::ResultSource;
 use KiokuDB::TypeMap::Entry::DBIC::ResultSet;
 use KiokuDB::TypeMap::Entry::DBIC::Schema;
 
@@ -329,14 +329,14 @@ sub default_typemap {
     KiokuDB::TypeMap->new(
         isa_entries => {
             # redirect to schema row
-            'DBIx::Class::Row'                => KiokuDB::TypeMap::Entry::DBIC::Row->new,
+            'DBIx::Class::Row'          => KiokuDB::TypeMap::Entry::DBIC::Row->new,
 
             # actual serialization
-            'DBIx::Class::ResultSet'          => KiokuDB::TypeMap::Entry::DBIC::ResultSet->new,
+            'DBIx::Class::ResultSet'    => KiokuDB::TypeMap::Entry::DBIC::ResultSet->new,
 
             # fake, the entries never get written to the db
-            'DBIx::Class::ResultSourceHandle' => KiokuDB::TypeMap::Entry::DBIC::ResultSourceHandle->new,
-            'DBIx::Class::Schema'             => KiokuDB::TypeMap::Entry::DBIC::Schema->new,
+            'DBIx::Class::ResultSource' => KiokuDB::TypeMap::Entry::DBIC::ResultSource->new,
+            'DBIx::Class::Schema'       => KiokuDB::TypeMap::Entry::DBIC::Schema->new,
         },
     );
 }
@@ -684,7 +684,7 @@ sub get {
                 ? ( data => $self->schema,
                     class => "DBIx::Class::Schema" )
                 : ( data => undef,
-                    class => "DBIx::Class::ResultSourceHandle" )
+                    class => "DBIx::Class::ResultSource" )
         );
     }
 
