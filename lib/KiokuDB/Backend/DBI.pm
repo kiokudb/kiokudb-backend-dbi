@@ -16,6 +16,7 @@ use Data::Stream::Bulk::DBI;
 use SQL::Abstract;
 use JSON;
 use Scalar::Util qw(weaken refaddr);
+use List::MoreUtils qw(any);
 
 use KiokuDB::Backend::DBI::Schema;
 use KiokuDB::TypeMap;
@@ -688,7 +689,10 @@ sub get {
         );
     }
 
-    return if @rows_and_ids != keys %entries; # ->rows only works after we're done
+    # ->rows only works after we're done
+    return if @rows_and_ids != keys %entries;
+    # case sensitivity differences, possibly?
+    return if any { !defined } @entries{@rows_and_ids};
 
     map { ref($_) ? $_ : $self->deserialize($_) } @entries{@rows_and_ids};
 }
