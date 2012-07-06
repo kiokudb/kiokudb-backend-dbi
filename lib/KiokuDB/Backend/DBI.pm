@@ -1086,7 +1086,7 @@ For more details see L<DBIx::Class::Schema::KiokuDB>.
 =head1 SUPPORTED DATABASES
 
 This driver has been tested with MySQL 5 (4.1 should be the minimal supported
-version), SQLite 3, and PostgresSQL 8.3.
+version), SQLite 3, and PostgreSQL 8.3.
 
 The SQL code is reasonably portable and should work with most databases. Binary
 column support is required when using the L<Storable> serializer.
