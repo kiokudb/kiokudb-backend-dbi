@@ -1,10 +1,4 @@
 package KiokuDB::TypeMap::Entry::DBIC::ResultSource;
-BEGIN {
-  $KiokuDB::TypeMap::Entry::DBIC::ResultSource::AUTHORITY = 'cpan:NUFFIN';
-}
-BEGIN {
-  $KiokuDB::TypeMap::Entry::DBIC::ResultSource::VERSION = '1.19';
-}
 use Moose;
 
 use Scalar::Util qw(weaken refaddr);
