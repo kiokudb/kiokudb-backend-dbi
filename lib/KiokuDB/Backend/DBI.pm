@@ -17,6 +17,7 @@ use SQL::Abstract;
 use JSON;
 use Scalar::Util qw(weaken refaddr);
 use List::MoreUtils qw(any);
+use Class::Load qw(load_class);
 
 use KiokuDB::Backend::DBI::Schema;
 use KiokuDB::TypeMap;
@@ -48,7 +49,7 @@ my %reserved_cols = ( map { $_ => 1 } @reserved_cols );
 
 subtype ValidColumnName, as Str, where { not exists $reserved_cols{$_} };
 subtype SchemaProto, as Defined, where {
-    Class::MOP::load_class($_) unless ref;
+    load_class($_) unless ref;
     !ref($_) || blessed($_) and $_->isa("DBIx::Class::Schema::KiokuDB");
 };
 
@@ -1002,7 +1003,7 @@ sub new_garbage_collector {
         my $cmd = $args{command};
         my $class = $args{class} || $cmd ? $cmd->class : "KiokuDB::GC::Naive";
 
-        Class::MOP::load_class($class);
+        load_class($class);
 
         return $class->new(
             %args,
