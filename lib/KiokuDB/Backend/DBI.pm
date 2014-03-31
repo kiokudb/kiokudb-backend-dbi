@@ -1,24 +1,25 @@
-#!/usr/bin/perl
-
 package KiokuDB::Backend::DBI;
 use Moose;
+# ABSTRACT: DBI backend for KiokuDB
 
 use Moose::Util::TypeConstraints;
 
-use MooseX::Types -declare => [qw(ValidColumnName SchemaProto)];
+use MooseX::Types 0.08 -declare => [qw(ValidColumnName SchemaProto)];
 
 use MooseX::Types::Moose qw(ArrayRef HashRef Str Defined);
 
 use Moose::Util::TypeConstraints qw(enum);
 
 use Try::Tiny;
-use Data::Stream::Bulk::DBI;
+use Data::Stream::Bulk::DBI 0.07;
 use SQL::Abstract;
 use JSON;
 use Scalar::Util qw(weaken refaddr);
 use List::MoreUtils qw(any);
 use Class::Load qw(load_class);
+use Search::GIN 0.07 ();
 
+use KiokuDB 0.46 ();
 use KiokuDB::Backend::DBI::Schema;
 use KiokuDB::TypeMap;
 use KiokuDB::TypeMap::Entry::DBIC::Row;
@@ -1021,10 +1022,6 @@ __END__
 
 =pod
 
-=head1 NAME
-
-KiokuDB::Backend::DBI - L<DBI> backend for L<KiokuDB>
-
 =head1 SYNOPSIS
 
     my $dir = KiokuDB->connect(
@@ -1303,17 +1300,8 @@ C<LONGBLOB> datatype.
 
 =head1 VERSION CONTROL
 
-L<http://github.com/nothingmuch/kiokudb-backend-dbi>
-
-=head1 AUTHOR
-
-Yuval Kogman E<lt>nothingmuch@woobling.orgE<gt>
-
-=head1 COPYRIGHT
-
-    Copyright (c) 2008, 2009 Yuval Kogman, Infinity Interactive. All
-    rights reserved This program is free software; you can redistribute
-    it and/or modify it under the same terms as Perl itself.
+KiokuDB-Backend-DBI is maintained using Git. Information about the repository
+is available on L<http://www.iinteractive.com/kiokudb/>
 
 =begin Pod::Coverage
 

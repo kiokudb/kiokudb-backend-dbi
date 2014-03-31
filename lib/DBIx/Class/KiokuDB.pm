@@ -1,4 +1,5 @@
 package DBIx::Class::KiokuDB;
+# ABSTRACT: Refer to KiokuDB objects from DBIx::Class tables.
 
 use strict;
 use warnings;
@@ -182,11 +183,6 @@ __PACKAGE__
 __END__
 
 =pod
-
-=head1 NAME
-
-DBIx::Class::KiokuDB - Refer to L<KiokuDB> objects from L<DBIx::Class>
-tables.
 
 =head1 SYNOPSIS
 

@@ -1,5 +1,6 @@
 package KiokuDB::TypeMap::Entry::DBIC::Row;
 use Moose;
+# ABSTRACT: KiokuDB::TypeMap::Entry for DBIx::Class::Row objects.
 
 use JSON;
 use Scalar::Util qw(weaken);
@@ -73,11 +74,6 @@ __PACKAGE__
 __END__
 
 =pod
-
-=head1 NAME
-
-KiokuDB::TypeMap::Entry::DBIC::Row - L<KiokuDB::TypeMap::Entry> for
-L<DBIx::Class::Row> objects.
 
 =head1 DESCRIPTION
 

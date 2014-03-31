@@ -9,8 +9,8 @@ BEGIN {
     plan skip_all => "DBD::SQLite  are required" unless eval { require DBI; require DBD::SQLite };
 }
 
-use ok 'KiokuDB::Backend::DBI';
-use ok 'KiokuDB::Entry';
+use KiokuDB::Backend::DBI;
+use KiokuDB::Entry;
 
 my $b = KiokuDB::Backend::DBI->new(
     dsn => 'dbi:SQLite:dbname=:memory:',

@@ -1,5 +1,6 @@
 package KiokuDB::TypeMap::Entry::DBIC::Schema;
 use Moose;
+# ABSTRACT: KiokuDB::TypeMap::Entry for DBIx::Class::Schema objects.
 
 use Scalar::Util qw(weaken refaddr);
 
@@ -62,11 +63,6 @@ __PACKAGE__
 __END__
 
 =pod
-
-=head1 NAME
-
-KiokuDB::TypeMap::Entry::DBIC::Schema - L<KiokuDB::TypeMap::Entry> for
-L<DBIx::Class::Schema> objects.
 
 =head1 DESCRIPTION
 

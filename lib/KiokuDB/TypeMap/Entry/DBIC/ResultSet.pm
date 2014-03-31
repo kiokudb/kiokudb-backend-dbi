@@ -1,5 +1,6 @@
 package KiokuDB::TypeMap::Entry::DBIC::ResultSet;
 use Moose;
+# ABSTRACT: KiokuDB::TypeMap::Entry for DBIx::Class::ResultSet objects
 
 use JSON;
 use Scalar::Util qw(weaken);
@@ -36,11 +37,6 @@ __PACKAGE__
 __END__
 
 =pod
-
-=head1 NAME
-
-KiokuDB::TypeMap::Entry::DBIC::ResultSet - L<KiokuDB::TypeMap::Entry> for
-L<DBIx::Class::ResultSet> objects
 
 =head1 DESCRIPTION
 

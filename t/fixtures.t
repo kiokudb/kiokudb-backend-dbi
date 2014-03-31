@@ -12,8 +12,8 @@ BEGIN {
 
 use Test::TempDir;
 
-use ok 'KiokuDB';
-use ok 'KiokuDB::Backend::DBI';
+use KiokuDB;
+use KiokuDB::Backend::DBI;
 
 use KiokuDB::Test;
 

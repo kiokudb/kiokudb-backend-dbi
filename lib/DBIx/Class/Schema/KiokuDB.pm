@@ -1,10 +1,13 @@
 package DBIx::Class::Schema::KiokuDB;
+# ABSTRACT: Hybrid KiokuDB/DBIx::Class::Schema schema support.
 
 use strict;
 use warnings;
 
 use Carp qw(croak);
 
+use DBI 1.607 ();
+use DBIx::Class 0.08127 ();
 use DBIx::Class::KiokuDB::EntryProxy;
 use DBIx::Class::ResultSource::Table;
 
@@ -161,11 +164,6 @@ __PACKAGE__
 __END__
 
 =pod
-
-=head1 NAME
-
-DBIx::Class::Schema::KiokuDB - Hybrid L<KiokuDB>/L<DBIx::Class::Schema> schema
-support.
 
 =head1 SYNOPSIS
 

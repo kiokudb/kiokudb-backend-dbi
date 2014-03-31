@@ -1,4 +1,5 @@
 package DBIx::Class::KiokuDB::EntryProxy;
+# ABSTRACT: A proxying result class for KiokuDB objects
 
 use strict;
 use warnings;
@@ -31,10 +32,6 @@ __PACKAGE__
 __END__
 
 =pod
-
-=head1 NAME
-
-DBIx::Class::KiokuDB::EntryProxy - A proxying result class for KiokuDB objects
 
 =head1 SYNOPSIS
 

@@ -1,5 +1,3 @@
-#!/usr/bin/perl
-
 package KiokuDB::Backend::DBI::Schema;
 use Moose;
 

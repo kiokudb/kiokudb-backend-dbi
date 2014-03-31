@@ -1,5 +1,6 @@
 package KiokuDB::TypeMap::Entry::DBIC::ResultSource;
 use Moose;
+# ABSTRACT: KiokuDB::TypeMap::Entry for DBIx::Class::ResultSource objects.
 
 use Scalar::Util qw(weaken refaddr);
 
@@ -65,11 +66,6 @@ __PACKAGE__
 __END__
 
 =pod
-
-=head1 NAME
-
-KiokuDB::TypeMap::Entry::DBIC::ResultSource - L<KiokuDB::TypeMap::Entry>
-for L<DBIx::Class::ResultSource> objects.
 
 =head1 DESCRIPTION
 
