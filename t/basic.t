@@ -1,13 +1,11 @@
-#!/usr/bin/perl
+#!/usr/bin/env perl
 
 use strict;
 use warnings;
 
 use Test::More;
 
-BEGIN {
-    plan skip_all => "DBD::SQLite  are required" unless eval { require DBI; require DBD::SQLite };
-}
+use Test::Requires 'DBD::SQLite';
 
 use KiokuDB::Backend::DBI;
 use KiokuDB::Entry;
